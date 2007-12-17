@@ -6,7 +6,6 @@ License:	LGPL
 Group: 		Graphics
 Source:		http://www.yafray.org/sec/2/downloads/yafray-%{version}.tar.bz2
 URL: 		http://www.yafray.org
-Buildroot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	libjpeg-devel
 BuildRequires:	libz-devel
 BuildRequires:	OpenEXR-devel
