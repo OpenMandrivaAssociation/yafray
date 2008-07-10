@@ -1,10 +1,12 @@
 Name:		yafray
 Version:	0.0.9
-Release:	%mkrel 2
-Summary:	YafRay: Yet Another Free RAYtracer 
-License:	LGPL
+Release:	%mkrel 3
+Summary:	Raytracing tool 
+License:	LGPLv2+
 Group: 		Graphics
-Source:		http://www.yafray.org/sec/2/downloads/yafray-%{version}.tar.bz2
+Source0:	http://www.yafray.org/sec/2/downloads/yafray-%{version}.tar.bz2
+# From Debian: fixes build with GCC 4.3 - AdamW 2008/07
+Patch0:		yafray-0.0.9-gcc43.patch
 URL: 		http://www.yafray.org
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	libjpeg-devel
@@ -17,6 +19,7 @@ YafRay is a graphic raytracer to render 3D models.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1 -b .gcc43
 perl -pi -e 's@/lib@/%{_lib}@g' linux-settings.py
 %build
 
@@ -29,6 +32,9 @@ scons prefix=%{_prefix}
 # TODO: also the plugins .so files should be under ./build-sse2, but we need
 # to modify the yafray library code so that they will be searched into
 # /usr/lib/yafray/sse2/ too, before /usr/lib/yafray/.
+# AdamW 2008/07 - libyafrayplugin and libyafraycore are really plugins,
+# not shared libraries, and should go to /usr/lib/yafray and /usr/lib/
+# yafray/sse2 as well. Debian does this.
 cp -p ./src/interface/libyafrayplugin.so \
 	./src/yafraycore/libyafraycore.so ./build-sse2
 scons -c 
