@@ -7,6 +7,7 @@ Group: 		Graphics
 Source0:	http://www.yafray.org/sec/2/downloads/yafray-%{version}.tar.bz2
 # From Debian: fixes build with GCC 4.3 - AdamW 2008/07
 Patch0:		yafray-0.0.9-gcc43.patch
+Patch1:         yafray-0.0.9-gcc44.patch
 URL: 		http://www.yafray.org
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	libjpeg-devel
@@ -20,6 +21,7 @@ YafRay is a graphic raytracer to render 3D models.
 %prep
 %setup -q -n %{name}
 %patch0 -p1 -b .gcc43
+%patch1 -p1 -b .gcc44
 perl -pi -e 's@/lib@/%{_lib}@g' linux-settings.py
 %build
 
