@@ -1,6 +1,6 @@
 Name:		yafray
 Version:	0.0.9
-Release:	%mkrel 5
+Release:	%mkrel 6
 Summary:	Raytracing tool 
 License:	LGPLv2+
 Group: 		Graphics
