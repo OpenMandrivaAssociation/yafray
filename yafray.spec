@@ -8,7 +8,7 @@ Source0:	http://www.yafray.org/sec/2/downloads/yafray-%{version}.tar.bz2
 # From Debian: fixes build with GCC 4.3 - AdamW 2008/07
 Patch0:		yafray-0.0.9-gcc43.patch
 Patch1:         yafray-0.0.9-gcc44.patch
-URL: 		http://www.yafray.org
+URL: 		https://www.yafray.org
 Buildroot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	libjpeg-devel
 BuildRequires:	libz-devel
